@@ -12,7 +12,7 @@ model = tf.keras.models.load_model("mejor_modelo.h5")
 class_names = ["americano", "azul", "chihuahua", "chile", "cottage", "fresco", "nuez", "panela", "quesillo"]
 
 # Permitir conexión desde app móvil y web
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app)
 
 @app.route("/predict", methods=["POST"])
 def predict_image():
@@ -26,7 +26,7 @@ def predict_image():
     predicted_class = class_names[np.argmax(predictions[0])]
     confidence = float(np.max(predictions[0]))
 
-    return jsonify({"class": predicted_class, "confidence": confidence})
+    return jsonify({"className": predicted_class, "confidence": confidence})
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
