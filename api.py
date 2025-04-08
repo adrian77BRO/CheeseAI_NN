@@ -9,7 +9,19 @@ app = Flask(__name__)
 # Cargar modelo entrenado
 model = tf.keras.models.load_model("mejor_modelo.h5")
 
-class_names = ["americano", "azul", "chihuahua", "chile", "cottage", "fresco", "nuez", "panela", "quesillo"]
+class_names = ["americano",
+               "azul",
+               "botanero",
+               "cheddar",
+               "chihuahua",
+               "chile",
+               "cotija",
+               "cottage",
+               "fresco",
+               "panela",
+               "parmesano",
+               "philadelphia",
+               "quesillo"]
 
 # Permitir conexión desde app móvil y web
 CORS(app)
